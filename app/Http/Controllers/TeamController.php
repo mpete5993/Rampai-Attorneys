@@ -17,10 +17,10 @@ class TeamController extends Controller
         ]);
     }
 
-    public function attorneyShow($id)
+    public function attorneyShow($slug)
     {
         # code...
-        $attorney = Attorney::where('id', $id)->firstOrFail();
+        $attorney = Attorney::where('slug', $slug)->firstOrFail();
 
         return view('attorney-detail')->with([
             'attorney' => $attorney,

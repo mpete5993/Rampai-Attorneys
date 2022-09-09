@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="block">
-                        <div class="title"><strong> <i class="fa fa-users"></i> Users:</strong></div>
+                        <div class="title"><strong> <i class="fa fa-users"></i> Users:</strong></div><hr>
                         <div class="table-responsive">
                             <table class="table table-striped table-hover" style="margin: 20px 0">
                                 <thead>
@@ -66,10 +66,15 @@
                                             <th scope="row"> {{ $user->id }} </th>
                                             <td> {{ $user->name }} </td>
                                             <td> {{ $user->email }} </td>
-                                            <td> {{ implode(' , ' , $user->roles()->get()->pluck('name')->toArray()) }} </td>
-                                            <td>
-                                                <img src="/img/avatar-0.jpg" alt="" width="50px"
-                                                    height="50px" style="border-radius: 50%">
+                                            <td>  
+                                            @if ($user->roles()->count() > 0)
+                                            {{ implode(' , ' , $user->roles()->get()->pluck('name')->toArray()) }}
+                                                @else
+                                                subscriber
+                                            @endif
+                                            </td>
+                                            <td class="avatar-icon">
+                                                <i class="fa fa-user"></i>
                                             </td>
                                             <td class="action">
                                                 <a href=" {{ route('admin.users.edit', $user->id) }} ">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Gallery;
+use Illuminate\Support\Carbon;
 use Toastr;
 
 
@@ -49,17 +50,26 @@ class GalleryController extends Controller
             'image' => ['required'] 
         ]);
 
-        if($request->has('image')){
-            foreach($request->file('image') as $image){
-                $imageName = $data['category_id'].'-image-'.time().rand(1, 1000).'.'.$image->extension();
-                $image->move('images/gallery',$imageName);
+        $image = array();
+
+        if ($files = $request->file('image')) {
+            foreach ($files as $file ) {
+                # code...
+                $image_name = md5(rand(1000, 10000));
+                $ext = strtolower($file->getClientOriginalExtension());
+                $image_full_name = $image_name.'.'.$ext;
+                $upload_path  = 'images/gallery/';
+                $image_url = $upload_path.$image_full_name;
+                $file->move($upload_path, $image_full_name);
+
+                $image[] = $image_url;
             }
-            Gallery::create([
+            Gallery::insert([
                 'category_id' => $request->category_id,
-                'image' => $imageName
+                'image' => implode('|', $image)
             ]);
         }
-        
+
         Toastr::success('images added successfully');
         return back();
     }
@@ -100,6 +110,31 @@ class GalleryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $gallery = Gallery::find($id);
+
+        $image = array();
+
+        // if ($files = $request->file('image')) {
+        //     foreach ($files as $file ) {
+        //         # code...
+        //         $image_name = md5(rand(1000, 10000));
+        //         $ext = strtolower($file->getClientOriginalExtension());
+        //         $image_full_name = $image_name.'.'.$ext;
+        //         $upload_path  = 'images/gallery/';
+        //         $image_url = $upload_path.$image_full_name;
+        //         $file->move($upload_path, $image_full_name);
+
+        //         $image[] = $image_url;
+        //     }
+        //     Gallery::insert([
+        //         'category_id' => $gallery,
+        //         'image' => implode('|', $image),
+        //         'created_at' => now()
+        //     ]);
+        // }
+
+        Toastr::success('images updated successfully');
+        return back();
     }
 
     /**

@@ -26,33 +26,23 @@ use App\Http\Controllers\TestimonialController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/dashboard',[WelcomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
-
 Route::get('/attorney/{attorney}', [TeamController::class, 'attorneyShow'])->name('attorney.show');
 Route::get('/attorneys', [TeamController::class, 'index'])->name('attorneys.index');
-
 Route::get('/practice-area/{practice_area}', [ServicesController::class, 'practiceAreaShow'])->name('practice_area.show');
 Route::get('/practice-areas', [ServicesController::class, 'index'])->name('practice_areas.index');
 Route::get('/services', [ServicesController::class, 'services'])->name('services.index');
-
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/sendEmail', [ContactController::class, 'store'])->name('sendEmail');
-
 Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonial.index');
 Route::post('/store', [TestimonialController::class, 'store'])->name('testimonial.store');
-
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'profile'])->name('profile.show');
+Route::patch('/profile', [App\Http\Controllers\ProfileController::class, 'updateProfile'])->name('profile.edit');
 
 Route::get('/about', function () {
     return view('about');
 });
-
-
 
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function(){
     Route::get('/', [IndexController::class, 'index'])->name('index');

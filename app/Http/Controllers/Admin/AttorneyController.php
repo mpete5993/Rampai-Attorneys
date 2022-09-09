@@ -20,7 +20,7 @@ class AttorneyController extends Controller
     public function index()
     {
         //
-        return view('admin.attorneys.index')->with('attorneys', Attorney::orderBy('created_at', 'desc')->latest()->paginate(5));
+        return view('admin.attorneys.index')->with('attorneys', Attorney::orderBy('id', 'asc')->latest()->paginate(5));
     }
 
     /**
@@ -56,10 +56,11 @@ class AttorneyController extends Controller
         $image = $request->image;
         $image_new_name = time().$image->getClientOriginalName();
         $image->move('images/team', $image_new_name);
+        $slug = md5(rand(1000, 10000));
 
         $attorney = Attorney::create([
             'user_id' => $request->user_id,
-            // 'slug' => Str::slug($request->user_id->name),
+            'slug' => Str::slug($slug),
             'phone' => $request->phone,
             'facebook' => $request->facebook,
             'linkedIn' => $request->linkedin,

@@ -20,7 +20,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        return view('admin.users.index')->with('users', User::orderBy('created_at', 'desc')->latest()->paginate(8));
+        return view('admin.users.index')->with('users', User::orderBy('id', 'asc')->latest()->paginate(8));
     }
 
     /**

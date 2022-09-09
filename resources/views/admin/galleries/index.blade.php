@@ -50,29 +50,7 @@
                     <div class="block">
                         <button type="button" data-toggle="modal" data-target="#myModal" class="btn-modal">
                             <i class="fa fa-folder"></i> Add new Album </button><hr>
-                        <div class="title"><strong>Upload new photos</strong></div>
-                        <div class="block-body">
-                            <form method="POST" action=" {{ route('admin.galleries.store') }} "
-                                enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group">
-                                    <label class="form-control-label">Select Album</label>
-                                    <select name="category_id" class="form-control mb-3 mb-3">
-                                        <option value="">Select Album</option>
-                                        @foreach ($categories as $category)
-                                            <option value=" {{ $category->id }} "> {{ $category->name }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-control-label">Image</label>
-                                    <input type="file" name="image[]" placeholder="" class="form-control" multiple>
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" value="Submit" class="btn btn-primary">
-                                </div>
-                            </form>
-                        </div>
+                        {{-- <div class="title"><strong>Upload new photos</strong></div> --}}
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -80,7 +58,7 @@
                         <div class="title"><strong>Galleries</strong></div>
                         <div class="block-body">
                             <div class="row">
-                                @foreach ($galleries as $album)
+                                @foreach ($categories as $album)
                                     <div class="col-lg-2">
                                         <div class="folder-list">
                                             <div class="">
@@ -89,7 +67,7 @@
                                                 </a>
                                             </div>
                                             <div class="">
-                                                <span> {{$album->category->name}} (8) </span>
+                                                <span> {{$album->name}} ( ) </span>
                                             </div>
                                         </div>
                                     </div>

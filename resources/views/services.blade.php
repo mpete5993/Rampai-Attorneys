@@ -58,7 +58,7 @@
             <h4>Our Services</h4>
         </div>
         @foreach ($services as $service)
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="prac-area-list">
                     <span><i class="fa fa-arrow-right"></i></span>
                     <a href=" {{ route('practice_area.show', $service->slug)}} "> {{$service->name}} </a>

@@ -67,7 +67,7 @@
                                         </span>
                                     </div>
                                     <div class="form-group">
-                                        <label> <i class="fa fa-envelope"></i> example@gmail.com</label><br>
+                                        <label> <i class="fa fa-envelope"></i> {{ $attorney->user->email }}</label><br>
                                     </div>
                                     <div class="">
                                         <Span>

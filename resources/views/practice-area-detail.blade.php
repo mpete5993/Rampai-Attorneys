@@ -67,13 +67,13 @@
         <div class="sidebar"> 
           <!-- Search -->
           <div class="widget">
-            <h5 class="widget-title">Search</h5>
+            {{-- <h5 class="widget-title">Search</h5>
             <div class="search">
               <form>
                 <input type="text" class="form-control" placeholder="Search">
                 <button type="submit" class="btn"><i class="fa fa-search"></i></button>
               </form>
-            </div>
+            </div> --}}
           </div>
           <!-- Categories -->
           <div class="widget">
@@ -85,7 +85,7 @@
             </ul>
           </div>
           <!-- Tags -->
-          <div class="widget">
+          {{-- <div class="widget">
             <h5 class="widget-title">Tags</h5>
             <ul class="tags">
               <li><a href="#.">Amazing </a></li>
@@ -98,7 +98,7 @@
               <li><a href="#.">Design </a></li>
               <li><a href="#.">Jobs </a></li>
             </ul>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>

@@ -262,12 +262,12 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="team-thumb">
                             <div class="thumb-image">
-                                <a href="{{ route('attorney.show', $attorney->id) }}">
+                                <a href="{{ route('attorney.show', $attorney->slug) }}">
                                     <img src="{{ asset($attorney->image) }}" class="animate"
                                         alt="{{ $attorney->name }}">
                                 </a>
                             </div>
-                            <h4><a href="{{ route('attorney.show', $attorney->id) }}">{{ $attorney->user->name }}</a>
+                            <h4><a href="{{ route('attorney.show', $attorney->slug) }}">{{ $attorney->user->name }}</a>
                             </h4>
                             <h5> {{ $attorney->practiceAreas()->get()->pluck('name')->first() }} </h5>
                             <ul class="list-inline social">
@@ -319,40 +319,19 @@
         </div>
         <ul class="testimonialsList">
             <!-- Client -->
-            <li class="item">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra id nunc at finibus.
-                    Etiam sollicitudin faucibus cursus. Proin luctus cursus nulla sed iaculis. Quisque vestibulum augue
-                    nec aliquet aliquet."</p>
-                <div class="clientname">Jhon Doe</div>
-                <div class="clientinfo">CEO - Company Inc</div>
-            </li>
-
-            <!-- Client -->
-            <li class="item">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra id nunc at finibus.
-                    Etiam sollicitudin faucibus cursus. Proin luctus cursus nulla sed iaculis. Quisque vestibulum augue
-                    nec aliquet aliquet."</p>
-                <div class="clientname">Jhon Doe</div>
-                <div class="clientinfo">CEO - Company Inc</div>
-            </li>
-
-            <!-- Client -->
-            <li class="item">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra id nunc at finibus.
-                    Etiam sollicitudin faucibus cursus. Proin luctus cursus nulla sed iaculis. Quisque vestibulum augue
-                    nec aliquet aliquet."</p>
-                <div class="clientname">Jhon Doe</div>
-                <div class="clientinfo">CEO - Company Inc</div>
-            </li>
-
-            <!-- Client -->
-            <li class="item">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra id nunc at finibus.
-                    Etiam sollicitudin faucibus cursus. Proin luctus cursus nulla sed iaculis. Quisque vestibulum augue
-                    nec aliquet aliquet."</p>
-                <div class="clientname">Jhon Doe</div>
-                <div class="clientinfo">CEO - Company Inc</div>
-            </li>
+            @if ($testimonials->count() < 0)
+                <li class="col-md-6">
+                    <p class="text-danger"></p>
+                </li>
+            @else
+                @foreach ($testimonials as $testimonial)
+                    <li class="item">
+                        <p>"{!! Str::limit($testimonial->content, 100) !!}"</p>
+                        <div class="clientname">{{ $testimonial->name }}</div>
+                        {{-- <div class="clientinfo">CEO - Company Inc</div> --}}
+                    </li>
+                @endforeach
+            @endif
         </ul>
     </div>
 </div>

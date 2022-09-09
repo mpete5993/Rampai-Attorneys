@@ -51,12 +51,12 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="team-thumb">
                             <div class="thumb-image">
-                                <a href="{{ route('attorney.show', $attorney->id) }}">
+                                <a href="{{ route('attorney.show', $attorney->slug) }}">
                                     <img src="{{ asset($attorney->image) }}" class="animate"
                                         alt="{{ $attorney->name }}">
                                 </a>
                             </div>
-                            <h4><a href="{{ route('attorney.show', $attorney->id) }}">{{ $attorney->user->name }}</a>
+                            <h4><a href="{{ route('attorney.show', $attorney->slug) }}">{{ $attorney->user->name }}</a>
                             </h4>
                             <h5> {{ $attorney->practiceAreas()->get()->pluck('name')->first() }} </h5>
                             <ul class="list-inline social">

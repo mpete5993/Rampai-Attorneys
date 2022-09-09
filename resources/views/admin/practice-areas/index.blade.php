@@ -97,6 +97,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{ $practice_areas->links() }}
                         </div>
                     </div>
                 </div>

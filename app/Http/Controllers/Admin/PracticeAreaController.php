@@ -19,7 +19,7 @@ class PracticeAreaController extends Controller
     public function index()
     {
         //
-        $practice_areas = PracticeArea::all();
+        $practice_areas = PracticeArea::orderBy('id', 'asc')->latest()->paginate(8);
         return view('admin.practice-areas.index', compact('practice_areas'));
     }
 

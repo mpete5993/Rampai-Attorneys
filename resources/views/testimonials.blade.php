@@ -49,7 +49,7 @@
                 <li class="col-md-6">
                     <p class="text-danger">No Testimonials yet </p>
                 </li>
-                @else
+            @else
                 @foreach ($testimonials as $testimonial)
                     <li class="col-md-12">
                         <div class="int">
@@ -57,8 +57,7 @@
                                 {!! $testimonial->content !!}
                             </p>
                         </div>
-                        <div class="clientinfo"> <strong> {{$testimonial->nam
-                         e}} (Client)</strong> </div>
+                        <div class="clientinfo"> <strong> {{ $testimonial->name }} (Client)</strong> </div>
                     </li>
                 @endforeach
             @endif
@@ -68,28 +67,29 @@
                 <!-- LEAVE COMMENTS -->
                 <div class="contact-form">
                     @if ($errors->count() > 0)
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li> {{$error}} </li>
-                            @endforeach
-                        </ul>
-                    </div>
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li> {{ $error }} </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     @endif
                     <h5>Give us your Feedback <i class="fa fa-comment-o"></i> </h5>
-                    <form id="contact-form" class="row" action="{{route('testimonial.store')}} " method="POST">
-                      @csrf
-                      <div class="col-md-12 col-sm-12">
-                        <input type="text" class="form-control" name="name" placeholder="Name">
-                      </div>
-                      <div class="col-md-12 col-sm-12">
-                        <textarea class="form-control" rows="5" name="content" placeholder="Message"></textarea>
-                      </div>
-                      <div class="col-md-12">
-                        <button id="submit" type="submit" class="form-control" >Send Message</button>
-                      </div>
+                    <form id="contact-form" class="row" action="{{ route('testimonial.store') }} " method="POST">
+                        @csrf
+                        <div class="col-md-12 col-sm-12">
+                            <input type="text" class="form-control" name="name" placeholder="Name">
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+                            <textarea class="form-control" rows="5" name="content" placeholder="Message"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <button id="submit" type="submit" class="form-control">Send Message</button>
+                        </div>
                     </form>
-                  </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

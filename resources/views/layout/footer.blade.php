@@ -6,12 +6,12 @@
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-3">
           <div class="footer-lwf">
-            <h3 class="footer-logo"><img src="images/logo.png" alt="Lawyer & Attorney"></h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquet, massa ac ornare feugiat, nunc dui auctor ipsum, sed posuere eros sapien id quam. </p>
+            <h3 class="footer-logo"><img src=" {{asset('images/logo.png')}} " alt="Lawyer & Attorney"></h3>
             <ul class="footer-contact">
-              <li><i class="fa fa-phone"></i> +1 1234 456789</li>
-              <li><i class="fa fa-envelope"></i> info@companyname.com</li>
-              <li><i class="fa fa-fax"></i> +1 123 123456</li>
+              <li><i class="fa fa-phone"><a href="tel:051 430 1065"></i> 051 430 1065</li></a>
+              <li><i class="fa fa-mobile"><a href="tel:079 183 0345"></i> 079 183 0345</li></a>
+              <li><i class="fa fa-envelope"><a href="mailto:info@rampaiattorneys.co.za"></i>info@rampaiattorneys.co.za</li></a>
+              <li><i class="fa fa-fax"></i> 051 430 1065</li>
             </ul>
           </div>
         </div>
@@ -21,9 +21,9 @@
             <ul>
               <li><a href=" {{url('/')}} ">Home</a></li>
               <li><a href=" {{url('about')}} ">About Company</a></li>
-              <li><a href=" {{url('service')}} ">Our Services</a></li>
+              <li><a href=" {{url('services')}} ">Our Services</a></li>
               <li><a href="{{ url('contact') }}">Contact Us</a></li>
-              <li><a href=" ">Gallery</a></li>
+              {{-- <li><a href=" ">Gallery</a></li> --}}
             </ul>
           </div>
         </div>
@@ -33,7 +33,7 @@
             <ul>
               <li><a href="{{ url('practice-areas')}}">Practice Areas List</a></li>
               <li><a href=" {{ url('attorneys')}} ">Attorney List</a></li>
-              <li><a href="testimonials.html">Testimonials</a></li>
+              <li><a href="{{ url('testimonials')}}">Testimonials</a></li>
             </ul>
           </div>
         </div>
@@ -61,8 +61,8 @@
   <div class="footer-bottom-area">
     <div class="container">
       <div class="row">
-        <div class="col-md-12 col-md-6"><span>Lawyer & Attorney</span>.</div>
-        <div class="col-md-12 col-md-6 text-right"><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></div>
+        <div class="col-md-12 col-md-6"><span>Rampai Attorneys</span>.</div>
+        <div class="col-md-12 col-md-6 text-right"><a target="_blank" href="https://www.templateshub.net"></a></div>
       </div>
     </div>
   </div>

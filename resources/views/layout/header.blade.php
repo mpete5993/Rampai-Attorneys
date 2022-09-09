@@ -14,8 +14,9 @@
 
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    
 
-    <!-- Fontawesome css -->
+    <!-- Fontawesome css --> 
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
 
     <!-- Rev Slider css -->
@@ -56,8 +57,6 @@
                 @if (Route::has('login'))
                     <ul>
                         @auth
-                            {{-- <img src="{{ URL::to('/Images') }}/{{ Auth::user()->avatar }} " class="avatar" alt=""
-                        style=""> --}}
                             <div class="dropdown">
                                 <button onclick="myFunction()" class="dropbtn">
                                     {{ Auth::user()->name }} <i class="fa fa-caret-down" aria-hidden="true"></i>

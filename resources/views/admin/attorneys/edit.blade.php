@@ -61,14 +61,18 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label">Practice Areas</label>
-                                    @foreach ($practice_areas as $practice_area)
-                                        <div class="i-checks">
-                                            <input type="checkbox" value=" {{ $practice_area->id }} "
-                                                class="checkbox-template" name="practice_areas[]"
-                                               value="{{$practice_area->id}}" {{ $attorney->AttorneyPracticeAreas($practice_area->name) ? 'checked':'' }}>
-                                            <label for="checkboxCustom1"> {{ $practice_area->name }} </label>
+                                    <div class="row">
+                                        @foreach ($practice_areas as $practice_area)
+                                        <div class="col-lg-4 col-md-4 col-sm-6">
+                                            <div class="i-checks">
+                                                <input type="checkbox" value=" {{ $practice_area->id }} "
+                                                    class="checkbox-template" name="practice_areas[]"
+                                                   value="{{$practice_area->id}}" {{ $attorney->AttorneyPracticeAreas($practice_area->name) ? 'checked':'' }}>
+                                                <label for="checkboxCustom1"> {{ $practice_area->name }} </label>
+                                            </div>
                                         </div>
                                     @endforeach
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">

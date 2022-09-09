@@ -43,6 +43,32 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
+                <div class="block">
+                        <div class="title"><strong>Upload more photos</strong></div>
+                        <div class="block-body">
+                            <form method="POST" action="{{ route('admin.galleries.update', $album->id) }}"
+                                enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                {{-- <div class="form-group">
+                                    <label class="form-control-label">Select Album</label>
+                                    <select name="category_id" class="form-control mb-3 mb-3">
+                                        <option value="">Select Album</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                                        @endforeach
+                                    </select>
+                                </div> --}}
+                                <div class="form-group">
+                                    <label class="form-control-label">Image</label>
+                                    <input type="file" name="image[]" placeholder="" class="form-control" multiple required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Submit" class="btn btn-primary">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -50,8 +76,18 @@
                     <div class="block">
                         <div class="title"><strong>Galleries of {{$album->category->name}} </strong></div>
                         <div class="block-body">
+                        @php
+                            $id = $album->id;
+                            $image = DB::table('galleries')->where('id', $id)->first();
+                            $images = explode('|', $image->image);
+                        @endphp
+
                             <div class="row">
-                                <img src="{{asset('images/gallery/'.$album->image)}}" alt="">
+                                @foreach ($images as $image)
+                                <div class="col-lg-4 p-1">
+                                <img src="{{asset($image)}}" alt="image" width="100%" height="100%">
+                                </div>   
+                                @endforeach
                             </div>
                         </div>
                     </div>

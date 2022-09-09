@@ -41,21 +41,27 @@ class ContactController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required',
-            'subject' => 'required',
             'message' => 'required'
         ]);
 
         $data = [
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
             'subject' => $request->subject,
             'message' => $request->message
         ];
 
-        Mail::to('mpete.bataung8@gmail.com')->send(new ContactMail($data));
+        Mail::send('email-template', $data, function($message) use ($data){
+            $message->to($data['email'])
+            ->subject($data['subject']);
+        });
 
-        return 'Thanks for reaching out';
+        // Mail::to('mpete.bataung8@gmail.com')->send(new ContactMail($data));
+
+        return back()->with([
+            'message' => 'Thanks for reaching out'
+        ]);
     }
 
     /**

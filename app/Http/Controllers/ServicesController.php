@@ -10,7 +10,7 @@ class ServicesController extends Controller
     public function index()
     {
         return view('practice-areas')->with([
-            'practice_areas' => PracticeArea::paginate(8)
+            'practice_areas' => PracticeArea::paginate(9)
         ]);
     }
 
@@ -29,7 +29,7 @@ class ServicesController extends Controller
 
         return view('practice-area-detail')->with([
             'practice_area' => $practice_area,
-            'practice_areas' => PracticeArea::inRandomOrder()->take(8)->get()
+            'practice_areas' => PracticeArea::inRandomOrder()->take(12)->get()
         ]);
     }
 }

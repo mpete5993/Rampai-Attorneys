@@ -100,19 +100,19 @@
           <form id="contact-form" class="row" action="{{route('sendEmail')}} " method="POST">
             @csrf
             <div class="col-md-4 col-sm-6">
-              <input type="text" class="form-control" name="name" placeholder="Name">
+              <input type="text" class="form-control" name="name" placeholder="Name" required>
             </div>
             <div class="col-md-4 col-sm-6">
-              <input type="email" class="form-control" name="email" placeholder="Email">
+              <input type="email" class="form-control" name="email" placeholder="Email" required>
             </div>
             <div class="col-md-4 col-sm-12">
-              <input type="tel" class="form-control" name="phone" placeholder="Phone">
+              <input type="tel" class="form-control" name="phone" placeholder="Phone" >
             </div>
             <div class="col-md-12 col-sm-12">
-              <input type="text" class="form-control" name="subject" placeholder="Subject">
+              <input type="text" class="form-control" name="subject" placeholder="Subject" >
             </div>
             <div class="col-md-12 col-sm-12">
-              <textarea class="form-control" rows="5" name="message" placeholder="Message"></textarea>
+              <textarea class="form-control ckeditor" rows="5" name="message" placeholder="Message" required></textarea>
             </div>
             <div class="col-md-12">
               <button id="submit" type="submit" class="form-control" >Send Message</button>
@@ -123,4 +123,10 @@
     </div>
   </div>
 </div>
+{{-- <script src=" {{ asset('js/CKeditor/ckeditor.js') }} "></script> --}}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.ckeditor').ckeditor();
+    });
+</script>
 @include('layout.footer')

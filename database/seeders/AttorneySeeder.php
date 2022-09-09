@@ -18,6 +18,7 @@ class AttorneySeeder extends Seeder
         //
         $attorney = Attorney::create([
             'user_id' => '1',
+            'slug' => 'ghkjaksfdogijmasdz-jndsfd',
             'phone' => '125879631178',
             'twitter' => 'example@twitter.com/4895522',
             'facebook' => 'example@facebook.com/hjdg7t8h4',
